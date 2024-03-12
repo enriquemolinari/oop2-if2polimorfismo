@@ -3,7 +3,7 @@ package unrn.procedural;
 public class TransportePasajeros extends Vehiculo {
     private int numeroDePasajeros;
 
-    public TransportePasajeros(int numeroDePasajeros) {
+    public TransportePasajeros(Integer numeroDePasajeros) {
         this.numeroDePasajeros = numeroDePasajeros;
     }
 

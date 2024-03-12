@@ -1,31 +1,40 @@
 package unrn.procedural;
 
 
+import java.lang.reflect.Constructor;
+import java.util.Map;
+
 public class RevisionTecnicaVehicular {
-    public static double calcularCostoRevision(String tipoVehiculo,
-                                               int anioFabricacion,
-                                               boolean dobleCabina,
-                                               int numeroPasajeros) {
-        double costoBase = 0;
 
-        switch (tipoVehiculo.toLowerCase()) {
-            case "auto":
-                costoBase = new Auto(anioFabricacion).costo();
-                //costoBase = Auto.calcularCostoAuto(anioFabricacion);
-                break;
-            case "pickup":
-                costoBase = new PickUp(dobleCabina).costo();
-//                        costoBase = PickUp.calcularCostoPickUp(dobleCabina);
-                break;
-            case "transporte pasajeros":
-                costoBase = new TransportePasajeros(numeroPasajeros).costo();
-                //costoBase = TransportePasajeros.calcularCostoTransportePasajeros(numeroPasajeros);
-                break;
-            default:
-                throw new RuntimeException("Tipo de vehículo no válido");
-        }
+    public static final String AUTO = "auto";
+    public static final String PICKUP = "pickup";
+    public static final String TRANSPORTE_PASAJEROS = "transporte pasajeros";
+    private final Map<String, Class<? extends Vehiculo>> vehiculos;
 
-        return costoBase;
+    public RevisionTecnicaVehicular() {
+        vehiculos = Map.of(AUTO,
+                Auto.class,
+                PICKUP,
+                PickUp.class,
+                TRANSPORTE_PASAJEROS,
+                TransportePasajeros.class);
     }
 
+    public double calcularCostoAuto(int anioFabricacion) throws ReflectiveOperationException {
+        Constructor<? extends Vehiculo> constructor = vehiculos.get(AUTO)
+                .getDeclaredConstructor(Integer.class);
+        return constructor.newInstance(new Object[]{anioFabricacion}).costo();
+    }
+
+    public double calcularCostoPickUp(boolean dobleCabina) throws ReflectiveOperationException {
+        Constructor<? extends Vehiculo> constructor = vehiculos.get(PICKUP)
+                .getDeclaredConstructor(Boolean.class);
+        return constructor.newInstance(new Object[]{dobleCabina}).costo();
+    }
+
+    public double calcularCostoTransporte(int numeroPasajeros) throws ReflectiveOperationException {
+        Constructor<? extends Vehiculo> constructor = vehiculos.get(TRANSPORTE_PASAJEROS).
+                getDeclaredConstructor(Integer.class);
+        return constructor.newInstance(new Object[]{numeroPasajeros}).costo();
+    }
 }

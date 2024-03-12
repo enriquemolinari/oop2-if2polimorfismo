@@ -1,9 +1,9 @@
 package unrn.procedural;
 
 public class PickUp extends Vehiculo {
-    private boolean dobleCabina;
+    private Boolean dobleCabina;
 
-    public PickUp(boolean dobleCabina) {
+    public PickUp(Boolean dobleCabina) {
         this.dobleCabina = dobleCabina;
     }
 

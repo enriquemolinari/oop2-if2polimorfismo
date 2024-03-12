@@ -5,7 +5,7 @@ import java.time.Year;
 public class Auto extends Vehiculo {
     private int anioFabricacion;
 
-    public Auto(int anioFabricacion) {
+    public Auto(Integer anioFabricacion) {
         this.anioFabricacion = anioFabricacion;
     }
 

@@ -23,4 +23,22 @@ public class RevisionTecnicaVehicularTest {
         var costo = new TransportePasajeros(55).costo();
         assertEquals(57500, costo, 0.0);
     }
+
+    @Test
+    public void costoRevisionAutoViaApi() throws ReflectiveOperationException {
+        var costo = new RevisionTecnicaVehicular().calcularCostoAuto(2015);
+        assertEquals(10090, costo, 0.0);
+    }
+
+    @Test
+    public void costoRevisionPickupViaApi() throws ReflectiveOperationException {
+        var costo = new RevisionTecnicaVehicular().calcularCostoPickUp(true);
+        assertEquals(17000, costo, 0.0);
+    }
+
+    @Test
+    public void costoRevisionTransporteViaApi() throws ReflectiveOperationException {
+        var costo = new RevisionTecnicaVehicular().calcularCostoTransporte(55);
+        assertEquals(57500, costo, 0.0);
+    }
 }
