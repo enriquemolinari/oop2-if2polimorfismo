@@ -8,19 +8,19 @@ public class RevisionTecnicaVehicularTest {
 
     @Test
     public void costoDeRevisionAuto() {
-        var costo = RevisionTecnicaVehicular.calcularCostoRevision("auto", 2015, false, -1);
+        var costo = new Auto(2015).costo();
         assertEquals(10090, costo, 0.0);
     }
 
     @Test
     public void costoDeRevisionPickUp() {
-        var costo = RevisionTecnicaVehicular.calcularCostoRevision("pickup", 2015, true, -1);
+        var costo = new PickUp(true).costo();
         assertEquals(17000, costo, 0.0);
     }
 
     @Test
     public void costoDeRevisionTransporte() {
-        var costo = RevisionTecnicaVehicular.calcularCostoRevision("transporte pasajeros", 2015, false, 55);
+        var costo = new TransportePasajeros(55).costo();
         assertEquals(57500, costo, 0.0);
     }
 }

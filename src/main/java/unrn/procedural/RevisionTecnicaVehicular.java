@@ -1,8 +1,6 @@
 package unrn.procedural;
 
 
-import java.time.Year;
-
 public class RevisionTecnicaVehicular {
     public static double calcularCostoRevision(String tipoVehiculo,
                                                int anioFabricacion,
@@ -12,23 +10,16 @@ public class RevisionTecnicaVehicular {
 
         switch (tipoVehiculo.toLowerCase()) {
             case "auto":
-                costoBase = 10000.0;
-                // Calcular porcentaje adicional basado en el año de fabricación
-                int anioActual = Year.now().getValue();
-                double porcentajeAdicional = (anioActual - anioFabricacion) * 0.1;
-                costoBase += costoBase * (porcentajeAdicional / 100);
+                costoBase = new Auto(anioFabricacion).costo();
+                //costoBase = Auto.calcularCostoAuto(anioFabricacion);
                 break;
             case "pickup":
-                costoBase = 15000.0;
-                if (dobleCabina) {
-                    costoBase += 2000.0;
-                }
+                costoBase = new PickUp(dobleCabina).costo();
+//                        costoBase = PickUp.calcularCostoPickUp(dobleCabina);
                 break;
             case "transporte pasajeros":
-                // Costo base
-                costoBase = 30000.0;
-                // Agregar costo adicional por pasajero
-                costoBase += numeroPasajeros * 500.0; // Supongamos que se cobran $500 por cada pasajero adicional
+                costoBase = new TransportePasajeros(numeroPasajeros).costo();
+                //costoBase = TransportePasajeros.calcularCostoTransportePasajeros(numeroPasajeros);
                 break;
             default:
                 throw new RuntimeException("Tipo de vehículo no válido");
@@ -36,4 +27,5 @@ public class RevisionTecnicaVehicular {
 
         return costoBase;
     }
+
 }
