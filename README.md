@@ -7,3 +7,8 @@ similar). Si es el caso refactoricemoslo aplicando los siguientes pasos:
 2. Agregamos el método polimórfico en cada abstracción.
 3. Llevamos el *cuerpo del if* a cada abstracción.
 4. Reemplazar el if por envío de mensaje polimórfico.
+
+¿Por qué esto es mejor?
+
+1. Agregar nuevos tipos, es tan simple como agregar una nueva clase. No toco código que existe y evito errores.
+2. Tengo mas clases, pero mas cohesivas. Los cambios estan localizados y no van a parar todos a la misma clase.
