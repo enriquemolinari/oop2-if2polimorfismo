@@ -1,20 +1,19 @@
 package unrn.procedural;
 
 
-import java.time.Year;
-
 public class RevisionTecnicaVehicular {
-    public static double calcularCostoRevision(String tipoVehiculo,
-                                               int anioFabricacion,
-                                               boolean dobleCabina,
-                                               int numeroPasajeros) {
+
+    public static double calcularCostoRevisionParaAnio(String tipoVehiculo,
+                                                       int anioFabricacion,
+                                                       boolean dobleCabina,
+                                                       int numeroPasajeros,
+                                                       int anioActual) {
         double costoBase = 0;
 
         switch (tipoVehiculo.toLowerCase()) {
             case "auto":
                 costoBase = 10000.0;
                 // Calcular porcentaje adicional basado en el año de fabricación
-                int anioActual = Year.now().getValue();
                 double porcentajeAdicional = (anioActual - anioFabricacion) * 0.1;
                 costoBase += costoBase * (porcentajeAdicional / 100);
                 break;

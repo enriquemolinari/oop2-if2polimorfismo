@@ -4,7 +4,5 @@ Programando en objetos no podemos tener sentencias *ifs* que pregunten por el ti
 refactoricemoslo aplicando los siguientes pasos:
 
 1. Creamos una jerarquía polimórfica con una abstracción por cada condición.
-2. Usando el mismo nombre de mensaje repartir el *cuerpo del if* en cada abstracción (usar polimorfismo).
-3. Nombrar el mensaje del paso anterior.
-4. Nombrar las abtracciones.
-5. Reemplazar el if por envío de mensaje polimórfico.
+2. Agregamos el método polimorfico en cada abstraction y llevamos el *cuerpo del if* a cada abstracción.
+3. Reemplazar el if por envío de mensaje polimórfico.
